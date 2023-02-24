@@ -21,8 +21,23 @@ function App() {
 
   const geometry = new THREE.BoxGeometry()
   const material = new THREE.MeshBasicMaterial({
-    
+    color: "blue"
   })
+
+  camera.position.z = 5
+
+  const cube = new THREE.Mesh(geometry, material)
+  scene.add(cube)
+
+  function animate() {
+    requestAnimationFrame(animate)
+    cube.rotation.x += 0.01
+    cube.rotation.y += 0.01
+
+    renderer.render(scene, camera)
+  }
+
+  animate()
   return null
 }
 
