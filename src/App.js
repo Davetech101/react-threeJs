@@ -28,6 +28,15 @@ function Box(props) {
   );
 }
 
+function Floor() {
+  return (
+    <mesh>
+      <boxBufferGeometry />
+      <meshPhysicalMaterial />
+    </mesh>
+  );
+}
+
 function App() {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
@@ -36,6 +45,7 @@ function App() {
         <Box position={[1,1,0]}/>
         <Orit/>
         <axesHelper args={[5]}/> 
+        <Floor/>
       </Canvas>
     </div>
   );
