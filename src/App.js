@@ -1,10 +1,9 @@
 import { useRef } from "react";
 
 import "./App.css";
-// import THREE from 'three/src/Three';
+import * as THREE from "three"
 import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-// const Geometry = new THREE.Geometry()
 extend({ OrbitControls });
 
 function Orit() {
@@ -15,13 +14,23 @@ function Orit() {
 function Box(props) {
   const ref = useRef();
   useFrame((state) => {
-    // ref.current.rotation.x += 0.01;
+    ref.current.rotation.x += 0.01;
     ref.current.rotation.y -= 0.01;
   });
   return (
-    <mesh ref={ref} {...props} castShadow receiveShadow>
+    <mesh ref={ref} {...props} castShadow>
       <boxGeometry />
-      <meshPhysicalMaterial color="blue" />
+      <meshPhysicalMaterial
+        color="white"
+        //  
+        // metalness={1}
+        transparent
+        roughness={0}
+        clearcoat={1}
+        transmission={.5}
+        reflectivity={1}
+        side={THREE.DoubleSide}
+      />
     </mesh>
   );
 }
@@ -53,7 +62,7 @@ function App() {
         style={{ background: "black" }}
         camera={{ position: [1, 5, 1] }}
       >
-        <fog attach="fog" args={["white", 1, 10]}/>
+        <fog attach="fog" args={["white", 1, 10]} />
         <ambientLight intensity={0.2} />
         <Bulb position={[0, 3, 0]} />
         <pointLight />
