@@ -34,7 +34,9 @@ function App() {
         <Orit/>
         <axesHelper args={[5]}/> 
         <points>
-          
+          <geometry>
+            <vector3/>
+          </geometry>
         </points>
       </Canvas>
     </div>
