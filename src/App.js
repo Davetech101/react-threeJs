@@ -1,8 +1,14 @@
 import { useRef } from "react";
 
 import "./App.css";
-import * as THREE from "three"
-import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
+import * as THREE from "three";
+import {
+  Canvas,
+  useFrame,
+  useThree,
+  extend,
+  useLoader,
+} from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 extend({ OrbitControls });
 
@@ -13,6 +19,7 @@ function Orit() {
 
 function Box(props) {
   const ref = useRef();
+  const texture = useLoader(THREE.TextureLoader, "/logo192.png")
   useFrame((state) => {
     ref.current.rotation.x += 0.01;
     ref.current.rotation.y -= 0.01;
@@ -21,15 +28,16 @@ function Box(props) {
     <mesh ref={ref} {...props} castShadow>
       <boxGeometry />
       <meshPhysicalMaterial
-        color="white"
-        //  
+        // color="white"
+        //
         // metalness={1}
-        transparent
-        roughness={0}
-        clearcoat={1}
-        transmission={.5}
-        reflectivity={1}
-        side={THREE.DoubleSide}
+        map={texture}
+        // transparent
+        // roughness={0}
+        // clearcoat={1}
+        // transmission={0.5}
+        // reflectivity={1}
+        // side={THREE.DoubleSide}
       />
     </mesh>
   );
@@ -60,7 +68,7 @@ function App() {
       <Canvas
         shadows={{ type: "BasicShadowMap" }}
         style={{ background: "black" }}
-        camera={{ position: [1, 5, 1] }}
+        camera={{ position: [3, 3, 3] }}
       >
         <fog attach="fog" args={["white", 1, 10]} />
         <ambientLight intensity={0.2} />
