@@ -28,11 +28,20 @@ function Box(props) {
   );
 }
 
-function Floor() {
+function Floor(props) {
   return (
-    <mesh>
-      <boxBufferGeometry />
+    <mesh {...props}>
+      <boxBufferGeometry args={[20, 1, 10]} />
       <meshPhysicalMaterial />
+    </mesh>
+  );
+}
+
+function Bulb(props) {
+  return (
+    <mesh {...props}>
+      <sphereBufferGeometry/>
+      <meshPhongMaterial emissive="yellow"/>
     </mesh>
   );
 }
@@ -41,11 +50,13 @@ function App() {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       <Canvas style={{ background: "black" }} camera={{position: [3,3,3]}}>
-        <ambientLight intensity={.5}/>
-        <Box position={[1,1,0]}/>
+        <ambientLight intensity={.2}/>
+        <pointLight/> 
+        <Bulb/>
+        <Box position={[-1,1,2]}/>
         <Orit/>
         <axesHelper args={[5]}/> 
-        <Floor/>
+        <Floor position={[0, -0.5, 0]}/>
       </Canvas>
     </div>
   );
