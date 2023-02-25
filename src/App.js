@@ -1,8 +1,10 @@
 import { useRef } from "react";
 
 import "./App.css";
+// import THREE from 'three/src/Three';
 import { Canvas, useFrame, useThree,  extend } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+// const Geometry = new THREE.Geometry()
 extend({ OrbitControls })
 
 function Orit() {
@@ -34,9 +36,9 @@ function App() {
         <Orit/>
         <axesHelper args={[5]}/> 
         <points>
-          <geometry>
-            <vector3/>
-          </geometry>
+          {/* <geometry>
+            <vector3 attachArray="verticies"/>÷
+          </geometry> */}
         </points>
       </Canvas>
     </div>
