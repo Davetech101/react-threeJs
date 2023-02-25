@@ -33,6 +33,9 @@ function App() {
         <Box position={[1,1,0]}/>
         <Orit/>
         <axesHelper args={[5]}/> 
+        <points>
+          
+        </points>
       </Canvas>
     </div>
   );
