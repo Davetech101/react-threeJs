@@ -23,7 +23,7 @@ function Box(props) {
   return (
     <mesh ref={ref} {...props}>
       <boxBufferGeometry />
-      <meshBasicMaterial color="blue" />
+      <meshPhysicalMaterial color="blue" />
     </mesh>
   );
 }
@@ -32,14 +32,10 @@ function App() {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       <Canvas style={{ background: "black" }} camera={{position: [3,3,3]}}>
+        <ambientLight intensity={.5}/>
         <Box position={[1,1,0]}/>
         <Orit/>
         <axesHelper args={[5]}/> 
-        <points>
-          {/* <geometry>
-            <vector3 attachArray="verticies"/>÷
-          </geometry> */}
-        </points>
       </Canvas>
     </div>
   );
